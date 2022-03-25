@@ -62,5 +62,11 @@ func main() {
 	if err != nil {
         log.Fatal(err)
 	}
+
+	// List remaining elements.
+	fmt.Printf("checking elements: %v\n", popper.Elements())
+
+	// Get the number of remaining elements.
+	fmt.Printf("number of elements: %d\n", popper.Len())
 }
 ```
