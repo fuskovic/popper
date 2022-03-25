@@ -29,6 +29,9 @@ type (
 
 		// Elements returns the underlying collection of elements.
 		Elements() []T
+
+		// Len returns the number of elements.
+		Len() int
 	}
 	popper[T comparable] struct{ elements []T }
 )
@@ -97,3 +100,4 @@ func (p *popper[T]) PopIndex(index int) (T, error) {
 }
 
 func (p *popper[T]) Elements() []T { return p.elements }
+func (p *popper[T]) Len() int      { return len(p.elements) }
