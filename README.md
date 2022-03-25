@@ -46,32 +46,52 @@ func main() {
 	p := popper.New(elements)
 
 	// PopFirst removes the first element from the underlying slice and returns it.
-	firstElement, err := popper.PopFirst()
+	firstElement, err := p.PopFirst()
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Printf("popped first element: %+v\n", firstElement)
 
 	// PopLast removes the last element from the underlying slice and returns it.
-	lastElement, err := popper.PopLast()
+	lastElement, err := p.PopLast()
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Printf("popped last element: %+v\n", lastElement)
 
 	// PopElement removes the target element from the underlying slice.
-	if err := popper.PopElement(customType{"third", 638}); err != nil {
+	target := myCustomType{"third", 638}
+	if err := p.PopElement(target); err != nil {
 		log.Fatal(err)
 	}
+	fmt.Printf("popped target element: %+v\n", target)
+	fmt.Printf("number of elements: %d\n", p.Len())
 
 	// PopIndex removes the element at the specified index from the underlying slice and returns it.
-	element, err := popper.PopIndex(2)
+	element, err := p.PopIndex(2)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	// List remaining elements.
-	fmt.Printf("checking elements: %v\n", popper.Elements())
+	fmt.Printf("popped element at index 2: %+v\n", element)
 
 	// Get the number of remaining elements.
-	fmt.Printf("number of elements: %d\n", popper.Len())
+	fmt.Printf("number of elements: %d\n", p.Len())
+
+	// You can use the Elements method to ditch the Popper interface when you're done 
+	// with it and reassign the modified slice of elements to the original type.
+	elements = p.Elements()
+	fmt.Printf("checking elements: %v\n", elements)
 }
+```
+
+## Output
+
+```
+popped first element: {someString:first someInt:543}
+popped last element: {someString:sixth someInt:611}
+popped target element: {someString:third someInt:638}
+number of elements: 3
+popped element at index 2: {someString:fifth someInt:524}
+number of elements: 2
+checking elements: [{second 234} {fourth 143}]
 ```
