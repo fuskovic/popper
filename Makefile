@@ -1,6 +1,6 @@
 .PHONY: test
 test:
-	@go clean go clean -testcache && go test -v .
+	@go clean -testcache && go test -v .
 
 .PHONY: coverage
 coverage:
