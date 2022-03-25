@@ -1,3 +1,8 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/fuskovic/popper.svg)](https://pkg.go.dev/github.com/fuskovic/popper)
+[![Go Report Card](https://goreportcard.com/badge/github.com/fuskovic/popper)](https://goreportcard.com/report/github.com/fuskovic/popper)
+![CI](https://github.com/fuskovic/popper/actions/workflows/ci.yaml/badge.svg)
+<a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-97%25-brightgreen.svg?longCache=true&style=flat)</a>
+
 # Popper
 
 A minimalistic interface that provides various popping utilities on a generic slice of elements.
