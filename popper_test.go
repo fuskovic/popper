@@ -10,11 +10,10 @@ func TestPopper(t *testing.T) {
 	t.Run("Pop First", func(t *testing.T) {
 		t.Run("Should Pass", func(t *testing.T) {
 			t.Run("struct popper", func(t *testing.T) {
-				p, err := New([]struct{ field string }{
+				p := New([]struct{ field string }{
 					{"first"},
 					{"last"},
 				})
-				require.NoError(t, err)
 				got, err := p.PopFirst()
 				require.NoError(t, err)
 				require.Equal(t, struct{ field string }{"first"}, got)
@@ -22,8 +21,7 @@ func TestPopper(t *testing.T) {
 		})
 		t.Run("Should Fail", func(t *testing.T) {
 			t.Run("Empty Elements", func(t *testing.T) {
-				p, err := New([]bool{true})
-				require.NoError(t, err)
+				p := New([]bool{true})
 				e, err := p.PopFirst()
 				require.NoError(t, err)
 				require.True(t, e)
@@ -38,11 +36,10 @@ func TestPopper(t *testing.T) {
 	t.Run("Pop Last", func(t *testing.T) {
 		t.Run("Should Pass", func(t *testing.T) {
 			t.Run("struct popper", func(t *testing.T) {
-				p, err := New([]struct{ field string }{
+				p := New([]struct{ field string }{
 					{"first"},
 					{"last"},
 				})
-				require.NoError(t, err)
 				got, err := p.PopLast()
 				require.NoError(t, err)
 				require.Equal(t, struct{ field string }{"last"}, got)
@@ -50,8 +47,7 @@ func TestPopper(t *testing.T) {
 		})
 		t.Run("Should Fail", func(t *testing.T) {
 			t.Run("Empty Elements", func(t *testing.T) {
-				p, err := New([]bool{true})
-				require.NoError(t, err)
+				p := New([]bool{true})
 				e, err := p.PopLast()
 				require.NoError(t, err)
 				require.True(t, e)
@@ -66,12 +62,11 @@ func TestPopper(t *testing.T) {
 	t.Run("Pop Element", func(t *testing.T) {
 		t.Run("Should Pass", func(t *testing.T) {
 			t.Run("struct popper", func(t *testing.T) {
-				p, err := New([]struct{ field string }{
+				p := New([]struct{ field string }{
 					{"first"},
 					{"second"},
 					{"last"},
 				})
-				require.NoError(t, err)
 				require.NoError(t, p.PopElement(struct{ field string }{"second"}))
 				require.Len(t, p.Elements(), 2)
 				require.Equal(t, struct{ field string }{"last"}, p.Elements()[1])
@@ -79,8 +74,7 @@ func TestPopper(t *testing.T) {
 		})
 		t.Run("Should Fail", func(t *testing.T) {
 			t.Run("Empty Elements", func(t *testing.T) {
-				p, err := New([]struct{ field string }{{"onlyone"}})
-				require.NoError(t, err)
+				p := New([]struct{ field string }{{"onlyone"}})
 				first, err := p.PopFirst()
 				require.NoError(t, err)
 				require.Equal(t, struct{ field string }{"onlyone"}, first)
@@ -89,13 +83,12 @@ func TestPopper(t *testing.T) {
 				require.Equal(t, ErrEmptyElements, err)
 			})
 			t.Run("Element Not Found", func(t *testing.T) {
-				p, err := New([]struct{ field string }{
+				p := New([]struct{ field string }{
 					{"first"},
 					{"second"},
 					{"last"},
 				})
-				require.NoError(t, err)
-				err = p.PopElement(struct{ field string }{"doesntexist"})
+				err := p.PopElement(struct{ field string }{"doesntexist"})
 				require.Error(t, err)
 				require.Equal(t, ErrElementNotFound, err)
 			})
@@ -103,12 +96,11 @@ func TestPopper(t *testing.T) {
 	})
 	t.Run("Pop Index", func(t *testing.T) {
 		t.Run("Should Pass", func(t *testing.T) {
-			p, err := New([]struct{ field string }{
+			p := New([]struct{ field string }{
 				{"first"},
 				{"second"},
 				{"last"},
 			})
-			require.NoError(t, err)
 			middleElement, err := p.PopIndex(1)
 			require.NoError(t, err)
 			require.Equal(t, struct{ field string }{"second"}, middleElement)
@@ -116,8 +108,7 @@ func TestPopper(t *testing.T) {
 		})
 		t.Run("Should Fail", func(t *testing.T) {
 			t.Run("Empty Elements", func(t *testing.T) {
-				p, err := New([]struct{ field string }{{"onlyone"}})
-				require.NoError(t, err)
+				p := New([]struct{ field string }{{"onlyone"}})
 				first, err := p.PopFirst()
 				require.NoError(t, err)
 				require.Equal(t, struct{ field string }{"onlyone"}, first)
@@ -126,13 +117,12 @@ func TestPopper(t *testing.T) {
 				require.Equal(t, ErrEmptyElements, err)
 			})
 			t.Run("Index Out Of Bounds", func(t *testing.T) {
-				p, err := New([]struct{ field string }{
+				p := New([]struct{ field string }{
 					{"first"},
 					{"second"},
 					{"last"},
 				})
-				require.NoError(t, err)
-				_, err = p.PopIndex(3)
+				_, err := p.PopIndex(3)
 				require.Error(t, err)
 				require.Equal(t, ErrIndexOutOfBounds, err)
 			})

@@ -37,13 +37,10 @@ type (
 )
 
 // New initializes a new Popper for a generic collection of elements.
-func New[T comparable](elements []T) (Popper[T], error) {
-	if len(elements) == 0 {
-		return nil, ErrEmptyElements
-	}
+func New[T comparable](elements []T) Popper[T] {
 	i := new(popper[T])
 	i.elements = elements
-	return i, nil
+	return i
 }
 
 func (p *popper[T]) PopFirst() (T, error) {
