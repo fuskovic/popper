@@ -37,30 +37,30 @@ func main() {
         {"sixth", 611},
     }
 
-    // Create a new popper.
+	// Create a new popper.
 	p := popper.New(elements)
 
-    // PopFirst removes the first element from the underlying slice and returns it.
+	// PopFirst removes the first element from the underlying slice and returns it.
 	firstElement, err := popper.PopFirst()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-    // PopLast removes the last element from the underlying slice and returns it.
+	// PopLast removes the last element from the underlying slice and returns it.
 	lastElement, err := popper.PopLast()
 	if err != nil {
-        log.Fatal(err)
+		log.Fatal(err)
 	}
 
-    // PopElement removes the target element from the underlying slice.
+	// PopElement removes the target element from the underlying slice.
 	if err := popper.PopElement(customType{"third", 638}); err != nil {
-        log.Fatal(err)
+		log.Fatal(err)
 	}
 
 	// PopIndex removes the element at the specified index from the underlying slice and returns it.
 	element, err := popper.PopIndex(2)
 	if err != nil {
-        log.Fatal(err)
+		log.Fatal(err)
 	}
 
 	// List remaining elements.
