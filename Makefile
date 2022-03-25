@@ -8,4 +8,4 @@ coverage:
 
 .PHONY: badge
 badge:
-	@gopherbadger -md="README.md" -png=false
+	@gopherbadger -md="README.md" -png=false && rm coverage.out
