@@ -13,7 +13,7 @@ type customType struct {
 }
 
 func main() {
-	popper, err := popper.New(
+	popper := popper.New(
 		[]customType{
 			{"doesntmatter", 543},
 			{"doesntmatteragain", 234},
@@ -23,10 +23,6 @@ func main() {
 			{"forrealthistime", 611},
 		},
 	)
-
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	fmt.Printf("elements: %v\nlen: %d\n", popper.Elements(), popper.Len())
 
