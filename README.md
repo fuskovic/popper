@@ -57,7 +57,7 @@ func main() {
         log.Fatal(err)
 	}
 
-    // PopIndex removes the element at the specified index from the underlying slice and returns it.
+	// PopIndex removes the element at the specified index from the underlying slice and returns it.
 	element, err := popper.PopIndex(2)
 	if err != nil {
         log.Fatal(err)
