@@ -33,14 +33,14 @@ type myCustomType struct {
 }
 
 func main() {
-    elements := []myCustomType{
-        {"first", 543},
-        {"second", 234},
-        {"third", 638},
-        {"fourth", 143},
-        {"fifth", 524},
-        {"sixth", 611},
-    }
+	elements := []myCustomType{
+		{"first", 543},
+		{"second", 234},
+		{"third", 638},
+		{"fourth", 143},
+		{"fifth", 524},
+		{"sixth", 611},
+	}
 
 	// Create a new popper.
 	p := popper.New(elements)
